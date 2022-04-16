@@ -17,6 +17,10 @@
   font-size: 16px;
 }
 
+.input:hover {
+  background-color: aquamarine;
+}
+
 .input:focus {
   outline: none;
 }
