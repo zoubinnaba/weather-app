@@ -1,4 +1,5 @@
 import './App.css';
+import Humidity from './assets/humidity.png'
 import React, { useState} from "react";
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
 
     const getWeater = (event) => {
       if(event.key === "Enter"){
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${apiKey}`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
         .then(response => response.json()
         ).then(data => {
           setWeatherData(data)
@@ -34,7 +35,9 @@ function App() {
               <div className='weather-data'>
                 <p className='city-name'>{ weatherData.name } </p>
                 <p className='city-temp'>{ Math.round(weatherData.main.temp)} 🌡️</p>
-                <p className='city-hum'>{ Math.round(weatherData.main.humidity)}</p>
+                <p className='city-hum'>{ Math.round(weatherData.main.humidity)}
+                <img className='icon-hum' src={Humidity} alt='humidity'/>
+                </p>
                 <p className='cloud'>{weatherData.weather[0].main}</p>
               </div>
             )}
